@@ -1,0 +1,132 @@
+cs1302-arcade:
+total 80
+-rw-r--r-- 1 ugrad 19121 Apr 27 21:56 LICENSE
+-rw-r--r-- 1 ugrad   207 Apr 27 21:56 Makefile
+-rw-r--r-- 1 ugrad  1942 Apr 27 21:56 pom.xml
+-rw-r--r-- 1 ugrad 17608 Apr 27 21:56 README.md
+-rw-r--r-- 1 ugrad  4353 Apr 27 21:59 rec46077
+-rw-r--r-- 1 ugrad  4400 Apr 27 22:03 rec48826
+-rw-r--r-- 1 ugrad     0 Apr 27 22:04 rec48933
+-rw-r--r-- 1 ugrad  2377 Apr 27 21:56 receipt420
+-rw-r--r-- 1 ugrad  1116 Apr 27 22:03 REFLECTION.md
+drwxr-xr-x 4 ugrad  4096 Apr 27 21:56 src
+drwxr-xr-x 6 ugrad  4096 Apr 27 21:56 target
+
+cs1302-arcade/src:
+total 8
+drwxr-xr-x 4 ugrad 4096 Apr 27 21:56 main
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 test
+
+cs1302-arcade/src/main:
+total 8
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 java
+drwxr-xr-x 2 ugrad 4096 Apr 27 21:56 resources
+
+cs1302-arcade/src/main/java:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 cs1302
+
+cs1302-arcade/src/main/java/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 27 21:56 arcade
+
+cs1302-arcade/src/main/java/cs1302/arcade:
+total 24
+-rw-r--r-- 1 ugrad 4754 Apr 27 21:56 ArcadeApp.java
+-rw-r--r-- 1 ugrad 1780 Apr 27 21:56 Breakout.java
+-rw-r--r-- 1 ugrad 1751 Apr 27 21:56 Breakout.java~
+-rw-r--r-- 1 ugrad 2459 Apr 27 21:56 Minesweeper.java
+-rw-r--r-- 1 ugrad 2647 Apr 27 21:56 Minesweeper.java~
+
+cs1302-arcade/src/main/resources:
+total 76
+-rw-r--r-- 1 ugrad  1257 Apr 27 21:56 breakout.jpg
+-rw-r--r-- 1 ugrad   697 Apr 27 21:56 m0.png
+-rw-r--r-- 1 ugrad   777 Apr 27 21:56 m1.png
+-rw-r--r-- 1 ugrad  1904 Apr 27 21:56 m2.png
+-rw-r--r-- 1 ugrad  1137 Apr 27 21:56 m3.png
+-rw-r--r-- 1 ugrad  1336 Apr 27 21:56 m4.png
+-rw-r--r-- 1 ugrad   939 Apr 27 21:56 m5.png
+-rw-r--r-- 1 ugrad  1578 Apr 27 21:56 m6.png
+-rw-r--r-- 1 ugrad  1567 Apr 27 21:56 m7.png
+-rw-r--r-- 1 ugrad  1427 Apr 27 21:56 m8.png
+-rw-r--r-- 1 ugrad  1254 Apr 27 21:56 mflag.png
+-rw-r--r-- 1 ugrad 13890 Apr 27 21:56 minesweeper.jpg
+-rw-r--r-- 1 ugrad  3420 Apr 27 21:56 mmine.jpg
+-rw-r--r-- 1 ugrad   871 Apr 27 21:56 m.png
+-rw-r--r-- 1 ugrad  3000 Apr 27 21:56 mquestion.jpg
+-rw-r--r-- 1 ugrad  1492 Apr 27 21:56 msSmiley.png
+
+cs1302-arcade/src/test:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 27 21:56 java
+
+cs1302-arcade/src/test/java:
+total 0
+
+cs1302-arcade/target:
+total 16
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 classes
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 generated-sources
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 maven-status
+drwxr-xr-x 2 ugrad 4096 Apr 27 21:56 test-classes
+
+cs1302-arcade/target/classes:
+total 116
+-rw-r--r-- 1 ugrad  1257 Apr 27 21:57 breakout.jpg
+-rw-r--r-- 1 ugrad 33852 Apr 27 21:56 checkers.jpg
+drwxr-xr-x 3 ugrad  4096 Apr 27 21:56 cs1302
+-rw-r--r-- 1 ugrad   697 Apr 27 21:57 m0.png
+-rw-r--r-- 1 ugrad   777 Apr 27 21:57 m1.png
+-rw-r--r-- 1 ugrad  1904 Apr 27 21:57 m2.png
+-rw-r--r-- 1 ugrad  1137 Apr 27 21:57 m3.png
+-rw-r--r-- 1 ugrad  1336 Apr 27 21:57 m4.png
+-rw-r--r-- 1 ugrad   939 Apr 27 21:57 m5.png
+-rw-r--r-- 1 ugrad  1578 Apr 27 21:57 m6.png
+-rw-r--r-- 1 ugrad  1567 Apr 27 21:57 m7.png
+-rw-r--r-- 1 ugrad  1427 Apr 27 21:57 m8.png
+-rw-r--r-- 1 ugrad  1254 Apr 27 21:57 mflag.png
+-rw-r--r-- 1 ugrad 13890 Apr 27 21:57 minesweeper.jpg
+-rw-r--r-- 1 ugrad  3420 Apr 27 21:57 mmine.jpg
+-rw-r--r-- 1 ugrad   871 Apr 27 21:57 m.png
+-rw-r--r-- 1 ugrad  3000 Apr 27 21:57 mquestion.jpg
+-rw-r--r-- 1 ugrad  1492 Apr 27 21:57 msSmiley.png
+
+cs1302-arcade/target/classes/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 27 21:57 arcade
+
+cs1302-arcade/target/classes/cs1302/arcade:
+total 20
+-rw-r--r-- 1 ugrad 5928 Apr 27 21:57 ArcadeApp.class
+-rw-r--r-- 1 ugrad 2511 Apr 27 21:57 Breakout.class
+-rw-r--r-- 1 ugrad 1175 Apr 27 21:56 Minesweeper$1.class
+-rw-r--r-- 1 ugrad 3423 Apr 27 21:57 Minesweeper.class
+
+cs1302-arcade/target/generated-sources:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 27 21:56 annotations
+
+cs1302-arcade/target/generated-sources/annotations:
+total 0
+
+cs1302-arcade/target/maven-status:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 maven-compiler-plugin
+
+cs1302-arcade/target/maven-status/maven-compiler-plugin:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 27 21:56 compile
+
+cs1302-arcade/target/maven-status/maven-compiler-plugin/compile:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 27 21:56 default-compile
+
+cs1302-arcade/target/maven-status/maven-compiler-plugin/compile/default-compile:
+total 8
+-rw-r--r-- 1 ugrad  59 Apr 27 21:57 createdFiles.lst
+-rw-r--r-- 1 ugrad 319 Apr 27 21:56 inputFiles.lst
+
+cs1302-arcade/target/test-classes:
+total 0
+/home/ugrads/connell/cs1302-arcade:/home/work/cs1302a

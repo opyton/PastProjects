@@ -1,0 +1,82 @@
+cs1302-arcade/:
+total 60
+-rw-r--r-- 1 ugrad 19121 Apr 14 15:58 LICENSE
+-rw-r--r-- 1 ugrad   207 Apr 14 15:58 Makefile
+-rw-r--r-- 1 ugrad  1942 Apr 14 15:58 pom.xml
+-rw-r--r-- 1 ugrad 17608 Apr 14 15:58 README.md
+-rw-r--r-- 1 ugrad     0 Apr 20 13:51 rec14508
+-rw-r--r-- 1 ugrad   629 Apr 20 13:40 REFLECTION.md
+drwxr-xr-x 3 ugrad  4096 Apr 14 15:58 src
+drwxr-xr-x 5 ugrad  4096 Apr 14 15:59 target
+
+cs1302-arcade/src:
+total 4
+drwxr-xr-x 4 ugrad 4096 Apr 16 23:23 main
+
+cs1302-arcade/src/main:
+total 8
+drwxr-xr-x 3 ugrad 4096 Apr 14 15:58 java
+drwxr-xr-x 2 ugrad 4096 Apr 20 13:44 resources
+
+cs1302-arcade/src/main/java:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 14 15:58 cs1302
+
+cs1302-arcade/src/main/java/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 20 13:44 arcade
+
+cs1302-arcade/src/main/java/cs1302/arcade:
+total 4
+-rw-r--r-- 1 ugrad 3682 Apr 20 13:44 ArcadeApp.java
+
+cs1302-arcade/src/main/resources:
+total 20
+-rw-r--r-- 1 ugrad  1257 Apr 16 23:23 breakout.jpg
+-rw-r--r-- 1 ugrad 13890 Apr 20 13:42 minesweeper.jpg
+
+cs1302-arcade/target:
+total 12
+drwxr-xr-x 3 ugrad 4096 Apr 20 13:44 classes
+drwxr-xr-x 3 ugrad 4096 Apr 14 15:59 generated-sources
+drwxr-xr-x 3 ugrad 4096 Apr 14 15:59 maven-status
+
+cs1302-arcade/target/classes:
+total 60
+-rw-r--r-- 1 ugrad  1257 Apr 16 23:23 breakout.jpg
+-rw-r--r-- 1 ugrad 33852 Apr 16 23:23 checkers.jpg
+drwxr-xr-x 3 ugrad  4096 Apr 14 15:59 cs1302
+-rw-r--r-- 1 ugrad 13890 Apr 20 13:44 minesweeper.jpg
+
+cs1302-arcade/target/classes/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 20 13:44 arcade
+
+cs1302-arcade/target/classes/cs1302/arcade:
+total 8
+-rw-r--r-- 1 ugrad 4170 Apr 20 13:44 ArcadeApp.class
+
+cs1302-arcade/target/generated-sources:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 14 15:59 annotations
+
+cs1302-arcade/target/generated-sources/annotations:
+total 0
+
+cs1302-arcade/target/maven-status:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 14 15:59 maven-compiler-plugin
+
+cs1302-arcade/target/maven-status/maven-compiler-plugin:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 14 15:59 compile
+
+cs1302-arcade/target/maven-status/maven-compiler-plugin/compile:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 14 15:59 default-compile
+
+cs1302-arcade/target/maven-status/maven-compiler-plugin/compile/default-compile:
+total 8
+-rw-r--r-- 1 ugrad 30 Apr 20 13:44 createdFiles.lst
+-rw-r--r-- 1 ugrad 75 Apr 20 13:40 inputFiles.lst
+/home/ugrads/nlee/cs1302-arcade/:/home/work/cs1302a

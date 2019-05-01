@@ -1,0 +1,366 @@
+package cs1302.arcade;
+
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyCode;
+import javafx.event.*;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Label;
+import javafx.scene.Group;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.VBox;
+import javafx.geometry.Insets;
+import javafx.scene.layout.Pane;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Background;
+import javafx.scene.text.Font;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+import javafx.scene.control.Button;
+
+public class Breakout {
+
+    public enum Velocity {
+	UPRIGHT,
+	UPLEFT,
+	DOWNRIGHT,
+	DOWNLEFT;
+    }
+
+    
+    private int score, lives;
+    private boolean started;
+    private Rectangle paddle;
+    private StackPane scoreBoard;
+    private Label scoreLabel, livesLabel, outOfBoundsMessage;
+    private Rectangle[][] enemies;
+    private boolean[][] alive;
+    private Circle ball;
+    private Velocity currentTrajectory;
+    private boolean ballOutOfBounds, gameDone;
+    private Button reinstantiationButton;
+    
+    Timeline timeline;
+    
+    Pane gameDisplay;
+    
+    Scene boLayout(ArcadeApp a, MenuBar menuBar) {
+	BorderPane boLayout = new BorderPane();
+
+	Label currentDifficulty = new Label();
+	switch (a.difficulty) {
+	case EASY: currentDifficulty.setText("Currently on easy"); break;
+	case MEDIUM: currentDifficulty.setText("Currently on medium");break;
+	case HARD: currentDifficulty.setText("Currently on hard");break;
+	}
+
+	scoreBoard.getChildren().add(currentDifficulty);
+	StackPane.setMargin(currentDifficulty, new Insets(8,8,8,8));
+	StackPane.setAlignment(currentDifficulty, Pos.CENTER);
+	
+	MenuItem eButton = new MenuItem("Easy");
+	eButton.setOnAction(e -> {
+		a.difficulty = ArcadeApp.Difficulty.EASY;
+		reinstantiationButton.fire();
+	    });
+	MenuItem mButton = new MenuItem("Medium");
+	mButton.setOnAction(e -> {
+		a.difficulty = ArcadeApp.Difficulty.MEDIUM;
+		reinstantiationButton.fire();
+	    });
+	MenuItem hButton = new MenuItem("Hard");
+	hButton.setOnAction(e -> {
+		a.difficulty = ArcadeApp.Difficulty.HARD;
+		reinstantiationButton.fire();
+	    });
+	Menu difficultyToggle = new Menu("Toggle Difficulty");
+	difficultyToggle.getItems().addAll(eButton, mButton, hButton);
+	MenuBar difficultyBar = new MenuBar(difficultyToggle);
+	
+	VBox topPart = new VBox(menuBar, difficultyBar , scoreBoard);
+	
+	gameDisplay = new Pane(paddle);
+
+	gameDisplay.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+	
+	for (int i = 0; i < 6; i++) {
+	    for (int j = 0; j < 6; j++) {
+		gameDisplay.getChildren().add(enemies[i][j]);
+	    }
+	}
+	paddle.setX(175);
+	paddle.setY(385);
+	gameDisplay.setPrefSize(450,400);
+	boLayout.setTop(topPart);
+	boLayout.setCenter(gameDisplay);
+
+	Label startPrompt = new Label("Press SPACE to begin!!");
+	startPrompt.setTextFill(Color.WHITE);
+	startPrompt.setFont(new Font(20));
+	startPrompt.setLayoutX(130);
+	startPrompt.setLayoutY(230);
+	gameDisplay.getChildren().add(startPrompt);
+	
+       	gameDisplay.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+		System.out.println(event);
+		if (event.getCode() == KeyCode.LEFT && paddle.getX() > 0 && started)  paddle.setX(paddle.getX() - 20.0);
+		if (event.getCode() == KeyCode.RIGHT && paddle.getX() < 335 && started) paddle.setX(paddle.getX() + 20.0);
+		if (event.getCode() == KeyCode.SPACE && !started) {
+		    started = true;
+		    gameDisplay.getChildren().remove(startPrompt);
+		    gameDisplay.getChildren().add(ball);
+		    timeline.play();
+		}
+		if (event.getCode() == KeyCode.TAB && ballOutOfBounds) {
+		    ballReset();
+		    ballOutOfBounds = false;
+		    paddleReset();
+		    lives--;
+		    updateLives();
+		    currentTrajectory = Velocity.UPLEFT;
+		    gameDisplay.getChildren().remove(outOfBoundsMessage);
+		    timeline.play();
+		}
+		if (event.getCode() == KeyCode.ENTER && gameDone) {
+		    reinstantiationButton.fire();
+		}
+	    });
+	
+	return new Scene(boLayout);
+    }
+
+    public Pane getGameDisplay() {
+	return gameDisplay;
+    }
+    public Breakout(Button b, ArcadeApp.Difficulty difficulty) {
+	reinstantiationButton = b;
+	started = false;
+	gameDone = false;
+
+	int speed = 25;
+	switch (difficulty) {
+	case EASY: speed = 25; break;
+	case MEDIUM: speed = 17; break;
+	case HARD: speed = 12; break;
+	}
+	
+	score = 0;
+	lives = 3;
+	scoreLabel = new Label(Integer.toString(score));
+	livesLabel = new Label(Integer.toString(lives));
+
+	ball = new Circle(232.5, 370, 10, Color.YELLOW);
+	currentTrajectory = Velocity.UPLEFT;
+
+	KeyFrame keyFrame = new KeyFrame(Duration.millis(speed), e -> {
+		checkCollision();
+		switch (currentTrajectory) {
+		case UPRIGHT: upRight(); break;
+		case UPLEFT: upLeft(); break;
+		case DOWNRIGHT: downRight(); break;
+		case DOWNLEFT: downLeft(); break;
+        }
+	    });
+	timeline = new Timeline();
+	timeline.getKeyFrames().add(keyFrame);
+	timeline.setCycleCount(Timeline.INDEFINITE);
+	
+	enemies = new Rectangle[6][6];
+	alive = new boolean[6][6];
+	for (int i = 0; i< 6; i++) {
+	    for (int j = 0; j < 6; j++) {
+		enemies[i][j] = new Rectangle(75,20);
+		int choice = (int)(Math.random() * 4);
+		switch (choice) {
+		case 0: enemies[i][j].setFill(Color.RED);break;
+		case 1: enemies[i][j].setFill(Color.WHITE);break;
+		case 2: enemies[i][j].setFill(Color.BLUE);break;
+		case 3: enemies[i][j].setFill(Color.GREEN);break;
+		}
+		enemies[i][j].setStroke(Color.BLACK);
+		enemies[i][j].setStrokeWidth(2.5);
+		enemies[i][j].setX(j * 75);
+		enemies[i][j].setY(i * 20);
+		alive[i][j] = true;
+	    }
+	}
+	
+	scoreBoard = new StackPane(scoreLabel, livesLabel);
+
+	StackPane.setMargin(scoreLabel, new Insets(8,8,8,8));
+	StackPane.setMargin(livesLabel, new Insets(8,8,8,8));
+	
+	StackPane.setAlignment(scoreLabel, Pos.CENTER_RIGHT);
+	StackPane.setAlignment(livesLabel, Pos.CENTER_LEFT);
+	
+	paddle = new Rectangle(115, 15);
+	paddle.setFill(Color.GRAY);
+    }
+
+    public int getScore() {
+	return score;
+    }
+
+    public int getLives() {
+	return lives;
+    }
+
+    public Rectangle getPaddle() {
+	return paddle;
+    }
+
+    private void upLeft() {
+	ball.setCenterX(ball.getCenterX() - 4);
+	ball.setCenterY(ball.getCenterY() - 4);
+    }
+
+    private void upRight() {
+	ball.setCenterX(ball.getCenterX() + 4);
+	ball.setCenterY(ball.getCenterY() - 4);
+    }
+
+    private void downLeft() {
+	ball.setCenterX(ball.getCenterX() - 4);
+	ball.setCenterY(ball.getCenterY() + 4);
+    }
+
+    private void downRight() {
+	ball.setCenterX(ball.getCenterX() + 4);
+	ball.setCenterY(ball.getCenterY() + 4);
+    }
+
+    private void changeVelocity(Rectangle r) {
+	switch (currentTrajectory) {
+	case UPRIGHT: currentTrajectory = Velocity.DOWNRIGHT;break;
+	case UPLEFT: currentTrajectory = Velocity.DOWNLEFT;break;
+	case DOWNRIGHT: currentTrajectory = Velocity.DOWNLEFT;break;
+	case DOWNLEFT: currentTrajectory = Velocity.DOWNRIGHT;break;
+	}
+    }
+
+    private void hitPaddle() {
+	switch (currentTrajectory) {
+	case DOWNRIGHT: currentTrajectory = Velocity.UPRIGHT;break;
+	case DOWNLEFT: currentTrajectory = Velocity.UPLEFT;break;
+	}
+    }
+    
+    private void hitWall() {
+	switch (currentTrajectory) {
+	case UPRIGHT: currentTrajectory = Velocity.UPLEFT;break;
+	case UPLEFT: currentTrajectory = Velocity.UPRIGHT;break;
+	case DOWNRIGHT: currentTrajectory = Velocity.DOWNLEFT;break;
+	case DOWNLEFT: currentTrajectory = Velocity.DOWNRIGHT;break;
+	}
+    }
+
+    private void hitCeiling() {
+	switch (currentTrajectory) {
+	case UPRIGHT: currentTrajectory = Velocity.DOWNRIGHT;break;
+	case UPLEFT: currentTrajectory = Velocity.DOWNLEFT;break;
+	}
+    }
+    
+    private void outOfBounds() {
+	timeline.pause();
+	ballOutOfBounds = true;
+	if (lives == 0) {
+	    gameOver();
+	    return;
+	}
+	outOfBoundsMessage = new Label("You've lost a life :(\nPress TAB to continue");
+	outOfBoundsMessage.setTextFill(Color.WHITE);
+	outOfBoundsMessage.setFont(new Font(20));
+	outOfBoundsMessage.setLayoutX(100);
+	outOfBoundsMessage.setLayoutY(230);
+	gameDisplay.getChildren().add(outOfBoundsMessage);
+    }
+
+    private void checkCollision() {
+	for (int i = enemies.length - 1; i >= 0; i--) {
+	    for (int j = enemies[0].length - 1; j >= 0; j--) {
+		if (!alive[i][j]) continue;
+		if (ball.getBoundsInParent().intersects(enemies[i][j].getBoundsInParent())) {
+		    changeVelocity(enemies[i][j]);
+		    destroyEnemy(i,j);
+		    return;
+		}
+	    }
+	}
+	if (ball.getBoundsInParent().intersects(0,0,1,400) || ball.getBoundsInParent().intersects(449,0,1,400)) {
+	    hitWall();
+	    return;
+	}
+	else if (ball.getBoundsInParent().intersects(0,399,450,1)) {
+	    outOfBounds();
+	    return;
+	}
+	else if (ball.getBoundsInParent().intersects(paddle.getBoundsInParent())) {
+	    hitPaddle();
+	    return;
+	}
+	else if (ball.getBoundsInParent().intersects(0,0,450,5)) {
+	    hitCeiling();
+	    return;
+	}
+    }
+
+    private void destroyEnemy(int row, int col) {
+	gameDisplay.getChildren().remove(enemies[row][col]);
+	alive[row][col] = false;
+	score++;
+	updateScore();
+	if (score == 36) {
+	    win();
+	}
+    }
+
+    private void updateScore() {
+	scoreLabel.setText(Integer.toString(score));
+    }
+
+    private void win() {
+	timeline.pause();
+	Label winMessage = new Label("Congrats!!\nPress ENTER to play again.");
+	winMessage.setTextFill(Color.WHITE);
+	winMessage.setFont(new Font(20));
+	winMessage.setLayoutX(100);
+	winMessage.setLayoutY(230);
+	gameDisplay.getChildren().add(winMessage);
+	gameDone = true;
+    }
+
+    private void ballReset() {
+	ball.setCenterX(232.5);
+	ball.setCenterY(370);
+    }
+
+    private void paddleReset() {
+	paddle.setX(175);
+	paddle.setY(385);
+    }
+
+    private void updateLives() {
+	livesLabel.setText(Integer.toString(lives));
+    }
+
+    private void gameOver() {
+	Label loseMessage = new Label("LOSER! Press ENTER to play again.");
+	loseMessage.setTextFill(Color.WHITE);
+	loseMessage.setFont(new Font(20));
+	loseMessage.setLayoutX(100);
+	loseMessage.setLayoutY(230);
+	gameDisplay.getChildren().add(loseMessage);
+	gameDone = true;
+    }
+}
