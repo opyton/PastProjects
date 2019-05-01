@@ -1,0 +1,11 @@
+Lee-Nathaniel-p2:
+total 148
+-rw-r--r-- 1 ugrad   185 Apr  2 19:33 makefile
+-rw-r--r-- 1 ugrad  5263 Apr  2 19:35 Matrix.cpp
+-rw-r--r-- 1 ugrad  2211 Apr  2 19:31 Matrix.h
+-rw-r--r-- 1 ugrad 54448 Apr  2 19:35 Matrix.o
+-rwxr-xr-x 1 ugrad 63011 Apr  2 19:34 p1
+-rw-r--r-- 1 ugrad  4227 Apr  2 19:30 p1.cpp
+-rw-r--r-- 1 ugrad   115 Apr  2 19:36 README.md
+-rw-r--r-- 1 ugrad     0 Apr  2 19:37 rec2451
+/home/ugrads/nlee/Lee-Nathaniel-p2:/home/work/cs1730a
