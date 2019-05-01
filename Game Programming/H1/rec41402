@@ -1,0 +1,24 @@
+H1:
+total 12
+drwxr-xr-x 2 ugrad 4096 Jan 17 17:40 logo1
+drwxr-xr-x 2 ugrad 4096 Jan 17 17:40 logo2
+drwxr-xr-x 2 ugrad 4096 Jan 17 17:40 logo3
+-rw-r--r-- 1 ugrad    0 Jan 17 17:41 rec41402
+
+H1/logo1:
+total 28
+-rw-r--r-- 1 ugrad  1103 Jan 17 17:40 T1Spotify.html
+-rw-r--r-- 1 ugrad 22811 Jan 17 17:40 T1SpotifyIcon.png
+
+H1/logo2:
+total 16
+-rw-r--r-- 1 ugrad  250 Jan 17 17:40 T2.html
+-rw-r--r-- 1 ugrad 1296 Jan 17 17:40 T2.js
+-rw-r--r-- 1 ugrad 7323 Jan 17 17:40 T2Yacht.jpeg
+
+H1/logo3:
+total 20
+-rw-r--r-- 1 ugrad  250 Jan 17 17:40 T3.html
+-rw-r--r-- 1 ugrad 1498 Jan 17 17:40 T3.js
+-rw-r--r-- 1 ugrad 9597 Jan 17 17:40 T3Steam.jpeg
+/home/ugrads/nlee/4070/H1:/home/work/csx070

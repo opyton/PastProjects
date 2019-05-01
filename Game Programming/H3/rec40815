@@ -1,0 +1,31 @@
+H3:
+total 8
+-rw-r--r-- 1 ugrad   16 Feb  1 18:22 readme.txt
+-rw-r--r-- 1 ugrad    0 Feb  1 18:22 rec40815
+drwxr-xr-x 3 ugrad 4096 Feb  1 18:22 T1
+
+H3/T1:
+total 24
+drwxr-xr-x 2 ugrad 4096 Feb  1 18:22 img
+-rw-r--r-- 1 ugrad  610 Feb  1 18:22 LayersToSprite.js
+-rw-r--r-- 1 ugrad  397 Feb  1 18:22 showheart.html
+-rw-r--r-- 1 ugrad 4557 Feb  1 18:22 showheart.js
+-rw-r--r-- 1 ugrad 2631 Feb  1 18:22 ugawebshowheart.js
+
+H3/T1/img:
+total 300
+-rw-r--r-- 1 ugrad   7685 Feb  1 18:22 frogmariothumb.png
+-rw-r--r-- 1 ugrad   7685 Feb  1 18:22 frogmariothumb-small.png
+-rw-r--r-- 1 ugrad   1134 Feb  1 18:22 heart.png
+-rw-r--r-- 1 ugrad  34308 Feb  1 18:22 heart.psd
+-rw-r--r-- 1 ugrad   2673 Feb  1 18:22 hearts.png
+-rw-r--r-- 1 ugrad    610 Feb  1 18:22 LayersToSprite.js
+-rw-r--r-- 1 ugrad   2494 Feb  1 18:22 mhearts0.png
+-rw-r--r-- 1 ugrad   2055 Feb  1 18:22 mhearts1.png
+-rw-r--r-- 1 ugrad   2484 Feb  1 18:22 mhearts2.png
+-rw-r--r-- 1 ugrad   2077 Feb  1 18:22 mhearts3.png
+-rw-r--r-- 1 ugrad   2499 Feb  1 18:22 spritesheet1.png
+-rw-r--r-- 1 ugrad   9074 Feb  1 18:22 spritesheet2.png
+-rw-r--r-- 1 ugrad   6609 Feb  1 18:22 spritesheet3.png
+-rw-r--r-- 1 ugrad 196740 Feb  1 18:22 spritesheet.psd
+/home/ugrads/nlee/4070/H3:/home/work/csx070

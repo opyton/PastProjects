@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+      		canvas { border: 3px solid black; }
+    </style>
+
+	<script type="text/javascript">
+		var x=150;
+		var y=150;
+
+		window.onload=function() // window intercept method - not clean
+		{
+			var c = document.getElementById( "canvas" );
+			var ctx = c.getContext( "2d" );
+			ctx.beginPath();
+			ctx.rect(0, 0, 300, 300);
+			ctx.fillStyle = "black";
+			ctx.fill();
+			
+			// ----- draw a circle
+			ctx.beginPath();
+			ctx.arc(150, 150, 125, 0, Math.PI*2, true);
+			ctx.closePath();
+			ctx.fillStyle="rgb(30,215,96)";
+			ctx.fill();
+			//arcs
+			ctx.beginPath();
+			ctx.lineWidth = 18;
+			ctx.arc(150, 280, 180, 4.3, 5.2);
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.lineWidth = 17;
+			ctx.arc(150, 320, 180, 4.38, 5.1);
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.lineWidth = 16;
+			ctx.arc(150, 360, 180, 4.42, 5.04);
+			ctx.stroke();
+		}
+		</script>
+</head>
+
+<body>
+	<canvas id="canvas" width="300" height="300">
+		Your browser does not support the canvas element.
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,17 @@
+Lee_Melchiore_assignment2:
+total 108
+-rw-r--r-- 1 ugrad    27 Feb 22 22:55 input.txt
+-rw-r--r-- 1 ugrad   599 Feb 22 22:55 ItemType.cpp
+-rw-r--r-- 1 ugrad   325 Feb 22 22:55 ItemType.h
+-rw-r--r-- 1 ugrad  2008 Feb 22 22:55 ItemType.o
+-rw-r--r-- 1 ugrad   158 Feb 22 22:55 ListNode.h
+-rwxr-xr-x 1 ugrad 28706 Feb 22 22:56 main
+-rw-r--r-- 1 ugrad  2219 Feb 22 22:55 main.cpp
+-rw-r--r-- 1 ugrad 10184 Feb 22 22:55 main.o
+-rw-r--r-- 1 ugrad   447 Feb 22 22:55 makefile
+-rw-r--r-- 1 ugrad   499 Feb 22 23:03 Readme.txt
+-rw-r--r-- 1 ugrad     0 Feb 22 23:05 rec58879
+-rw-r--r-- 1 ugrad  4098 Feb 22 22:56 SortedLinkedList.cpp
+-rw-r--r-- 1 ugrad   484 Feb 22 22:55 SortedLinkedList.h
+-rw-r--r-- 1 ugrad 19184 Feb 22 22:56 SortedLinkedList.o
+/home/ugrads/nlee/DataStructures/Lee_Melchiore_assignment2:/home/work/cs2720c

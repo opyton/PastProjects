@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>H2 Task1 PartB </title>
+    	<style type="text/css">
+      		canvas { border: 3px solid black; }
+    	</style>
+
+	<script type="text/javascript">
+
+//BEGIN LIBRARY CODE
+	// Global variable here
+	var x = 100;
+	var y = 150;
+        var x1 = 250;
+	var y1 = 150;
+	
+	var vx = 0;var vx1 = 15;
+	var vy = 15;var vy1 = 0;
+	var BALL_RADIUS = 20;
+	var isUp = false;
+		
+	var dx = 0;//var dx = 2;
+	var dy = 4;
+	var WIDTH;
+	var HEIGHT;
+	var ctx;
+	var interval = 20;
+ 	var canvas;
+
+	function init()
+	{
+		ctx = document.getElementById('canvas').getContext('2d');
+		WIDTH = ctx.canvas.width; // not with the canvas 'variable'
+  		HEIGHT = ctx.canvas.height;
+
+		// call setInterval to request browser to run function every 
+		//	X milli sec
+		return setInterval( draw, interval );
+	}
+
+	function circle(x,y,r) 
+	{
+  		ctx.beginPath();
+  		ctx.arc(x, y, r, 0, Math.PI*2, true);
+  		ctx.closePath();
+  		ctx.fill();
+	}
+
+	function rect(x,y,w,h){
+  		ctx.beginPath();
+  		ctx.rect(x,y,w,h);
+  		ctx.closePath();
+  		ctx.fill();
+	}
+
+	function clear(){
+  		ctx.clearRect(0, 0, WIDTH, HEIGHT);
+	}
+	//END LIBRARY CODE
+
+	function draw(){
+		clear();
+		circle(x,y,BALL_RADIUS);
+                circle(x1,y1,BALL_RADIUS);
+
+		// direction of change
+		if( x + vx > WIDTH - BALL_RADIUS || x + vx < 0  )
+	        vx = -vx;
+	
+		// is it below ground
+		if( y + vy > HEIGHT - BALL_RADIUS) 
+		{
+	        vy = -vy;
+	        isUp = true;
+		}
+		// or in the ceiling (0,0) is top left corner
+		else if( y + vy < 0 ) 
+		{
+	        vy = -vy;
+	        isUp = false;
+		}
+	
+	
+	    if( isUp ) 
+		{
+	    	vy += 1;  // adding 'gravity' 
+	        if( vy >= 0 )
+                    isUp = false;
+	    }
+			
+		else // down
+		{
+	    	vy += 1; // adding 'gravity'
+	    }
+	
+	// check left wall
+	if( x - BALL_RADIUS < 0 )
+		x =  BALL_RADIUS - 15;
+	
+	if( x + vx > WIDTH - BALL_RADIUS)
+		x = WIDTH + 200;
+	
+			
+	x += vx;
+ 	y += vy;
+	
+	// avoid sinking check the boarder!
+	// need STRONG border control
+	if(y>HEIGHT-BALL_RADIUS)
+		y = HEIGHT-BALL_RADIUS;
+	
+        
+        
+        // direction of change
+		if( y1 + vy1 > WIDTH - BALL_RADIUS || y1 + vy1 < 0  )
+	        vy1 = -vy1;
+	
+		// is it below ground
+		if( x1 + vx1> HEIGHT - BALL_RADIUS) 
+		{
+	        vx1 = -vx1;
+	        isUp = true;
+		}
+		// or in the ceiling (0,0) is top left corner
+		else if( x1 + vx1 < 0 ) 
+		{
+	        vx1 = -vx1;
+	        isUp = false;
+		}
+	
+	
+	    if( isUp ) 
+		{
+	    	vx1 += 1;  // adding 'gravity' 
+	        if( vx1 >= 0 )
+                    isUp = false;
+	    }
+			
+		else // down
+		{
+	    	vx1 += 1; // adding 'gravity'
+	    }
+	
+	// check left wall
+	if( y1 - BALL_RADIUS < 0 )
+		y1 =  BALL_RADIUS - 15;
+	
+	if( y1 + vy1 > WIDTH - BALL_RADIUS)
+		y1 = WIDTH + 200;
+	
+			
+	y1 += vy1;
+ 	x1 += vx1;
+	
+	// avoid sinking check the boarder!
+	// need STRONG border control
+	if(x1>HEIGHT-BALL_RADIUS)
+		x1 = HEIGHT-BALL_RADIUS;
+	
+        
+        
+        
+	}
+	
+</script>
+</head>
+
+<!-- HERE we add an explicit call to the draw() function -->
+<body onload="init()">
+<canvas id="canvas" width="300" height="300">
+Your browser does not support the canvas element.
+</canvas>
+</body>
+</html>
+

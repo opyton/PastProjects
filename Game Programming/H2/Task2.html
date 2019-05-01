@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Task 2 </title>
+    	<style type="text/css">canvas { border: 3px solid black; }</style>
+	<script type="text/javascript">
+	var BALL_RADIUS = 20;
+	var isUp = false;
+	var dx = 2;
+	var dy = 4;
+	var WIDTH, HEIGHT, ctx, canvas;
+	var interval = 20;
+	class Ball{
+		constructor(x,y,vx,vy,r){
+			this.x=x;this.y=y;
+			this.vx=vx;this.vy=vy;
+			this.r=r;	
+		}
+		
+		draw(){
+			clear();
+			circle(this.x,this.y,BALL_RADIUS);
+
+			// direction of change
+			if( this.x + this.vx > WIDTH - BALL_RADIUS || this.x + this.vx < 0)
+				this.vx = -(this.vx);	
+			// is it below ground
+			if( this.y + this.vy > HEIGHT - BALL_RADIUS){
+				this.vy = -(this.vy);
+				isUp = true;
+			}
+			// or in the ceiling (0,0) is top left corner
+			else if( this.y + this.vy < 0 ){
+				this.vy = -(this.vy);
+				isUp = false;
+			}
+			if(isUp){
+				this.vy += 1;  // adding 'gravity' 
+				if( this.vy >= 0 )
+					isUp = false;
+			}
+			else{
+				this.vy += 1; // adding 'gravity'
+			}
+
+			// check left wall
+			if( this.x - BALL_RADIUS < 0 )
+				this.x =  BALL_RADIUS - 15;
+			if( this.x + this.vx > WIDTH - BALL_RADIUS)
+				this.x = WIDTH + 200;
+			
+			this.x += this.vx;
+			this.y += this.vy;
+
+			// avoid sinking check the boarder!
+			// need STRONG border control
+			if(this.y>HEIGHT-BALL_RADIUS)
+				this.y = HEIGHT-BALL_RADIUS;
+		}
+	}//Ball Class
+	
+	var b1 = new Ball(150,150,15,15,20); 
+	
+	function init(){
+		ctx = document.getElementById('canvas').getContext('2d');
+		WIDTH = ctx.canvas.width; // not with the canvas 'variable'
+  		HEIGHT = ctx.canvas.height;
+		// call setInterval to request browser to run function every 
+		//	X milli sec
+		console.log(b1.x);
+		setInterval( function(){b1.draw();}, interval );
+	}//init
+
+	function circle(x,y,r){
+  		ctx.beginPath();
+  		ctx.arc(x, y, r, 0, Math.PI*2, true);
+  		ctx.closePath();
+  		ctx.fill();
+	}//circle
+
+	function clear(){ctx.clearRect(0, 0, WIDTH, HEIGHT);}
+
+</script>
+</head>
+<!-- HERE we add an explicit call to the draw() function -->
+<body onload="init()">
+<canvas id="canvas" width="300" height="300">
+Your browser does not support the canvas element.
+</canvas>
+</body>
+</html>

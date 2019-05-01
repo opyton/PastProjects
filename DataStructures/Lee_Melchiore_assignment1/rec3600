@@ -1,0 +1,17 @@
+Lee_Melchiore_assignment1:
+total 152
+-rw-r--r-- 1 ugrad  6964 Jan 31 00:23 Instructor.cpp
+-rw-r--r-- 1 ugrad   510 Jan 31 00:23 Instructor.h
+-rw-r--r-- 1 ugrad 27232 Jan 31 00:24 Instructor.o
+-rw-r--r-- 1 ugrad    86 Jan 31 00:23 instructors.txt
+-rwxr-xr-x 1 ugrad 37784 Jan 31 00:24 main
+-rw-r--r-- 1 ugrad  5972 Jan 31 00:23 main.cpp
+-rw-r--r-- 1 ugrad 26712 Jan 31 00:23 main.o
+-rw-r--r-- 1 ugrad   382 Jan 31 00:23 makefile
+-rw-r--r-- 1 ugrad   547 Jan 31 00:32 Readme.txt
+-rw-r--r-- 1 ugrad     0 Jan 31 00:33 rec3600
+-rw-r--r-- 1 ugrad  1701 Jan 31 00:23 Student.cpp
+-rw-r--r-- 1 ugrad   593 Jan 31 00:23 Student.h
+-rw-r--r-- 1 ugrad  9448 Jan 31 00:24 Student.o
+-rw-r--r-- 1 ugrad   813 Jan 31 00:23 students.txt
+/home/ugrads/nlee/DataStructures/Lee_Melchiore_assignment1:/home/work/cs2720c
